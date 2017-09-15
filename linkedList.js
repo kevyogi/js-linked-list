@@ -26,16 +26,25 @@ function linkedListGenerator(){
       head = test;
       tail = test;
     }else{
-      tail = test;
       tail.next = test;
+      tail = test;
     }
 
     return test;
   }
 
   function get(number){
-
+    var test1 = head;
+    for(var i = 0; i < number; i++){
+      if(test1.next){
+        test1 = test1.next;
+      }else{
+        return false;
+      }
+    }
+    return test1;
   }
+
 
   function remove(number){
 

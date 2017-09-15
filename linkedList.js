@@ -17,11 +17,7 @@ function linkedListGenerator(){
   }
 
   function add(value){
-    test = {
-      value: value,
-      next: test
-    }
-    return test;
+
   }
 
   function get(number){

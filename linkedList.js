@@ -34,10 +34,10 @@ function linkedListGenerator(){
 
   function get(number){
     var current = head;
-    if(number === 0){
-      return head;
-    }else if(number < 0){
+    if(number < 0 || !head){
       return false;
+    }else if(number === 0){
+      return head;
     }else{
       for(var i = 0; i < number; i++){
         if(current.next){
@@ -49,7 +49,6 @@ function linkedListGenerator(){
     }
     return current;
   }
-
 
   function remove(number){
     var previous = get(number-1);

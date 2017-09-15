@@ -5,7 +5,6 @@
  */
 function linkedListGenerator(){
   var head  = null;
-  var temp = null;
   var tail = null;
 
   function getHead(){
@@ -35,11 +34,17 @@ function linkedListGenerator(){
 
   function get(number){
     var test1 = head;
-    for(var i = 0; i < number; i++){
-      if(test1.next){
-        test1 = test1.next;
-      }else{
-        return false;
+    if(number === 0){
+      return head;
+    }else if(number < 0){
+      return false;
+    }else{
+      for(var i = 0; i < number; i++){
+        if(test1.next){
+          test1 = test1.next;
+        }else{
+          return false;
+        }
       }
     }
     return test1;
@@ -47,11 +52,37 @@ function linkedListGenerator(){
 
 
   function remove(number){
-
+    var previous = get(number-1);
+    var target = get(number);
+    var newNext = get(number+1);
+    if(target === false){
+      return false;
+    }else if(previous === false){
+      head = newNext;
+    }else if(newNext === false){
+      tail = previous;
+      tail.next = null;
+    }else{
+      previous.next = newNext;
+    }
   }
 
   function insert(value, number){
-
+    var newNode = {
+      value: value,
+      next: null
+    };
+    var target = get(number);
+    var previous = get(number-1);
+    if(!target){
+      return false;
+    }else if(number === 0){
+      newNode.next = head;
+      head = newNode;
+    }else{
+      previous.next = newNode;
+      newNode.next = target;
+    }
   }
 
   return {

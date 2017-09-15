@@ -16,38 +16,38 @@ function linkedListGenerator(){
   }
 
   function add(value){
-    test = {
+    newNode = {
       value: value,
       next: null
     }
 
-    if(head === null){
-      head = test;
-      tail = test;
+    if(!head){
+      head = newNode;
+      tail = newNode;
     }else{
-      tail.next = test;
-      tail = test;
+      tail.next = newNode;
+      tail = newNode;
     }
 
-    return test;
+    return newNode;
   }
 
   function get(number){
-    var test1 = head;
+    var current = head;
     if(number === 0){
       return head;
     }else if(number < 0){
       return false;
     }else{
       for(var i = 0; i < number; i++){
-        if(test1.next){
-          test1 = test1.next;
+        if(current.next){
+          current = current.next;
         }else{
           return false;
         }
       }
     }
-    return test1;
+    return current;
   }
 
 
@@ -55,11 +55,11 @@ function linkedListGenerator(){
     var previous = get(number-1);
     var target = get(number);
     var newNext = get(number+1);
-    if(target === false){
+    if(!target){
       return false;
-    }else if(previous === false){
+    }else if(!previous){
       head = newNext;
-    }else if(newNext === false){
+    }else if(!newNext){
       tail = previous;
       tail.next = null;
     }else{

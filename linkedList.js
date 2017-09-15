@@ -5,7 +5,7 @@
  */
 function linkedListGenerator(){
   var head  = null;
-  var test = null;
+  var temp = null;
   var tail = null;
 
   function getHead(){
@@ -17,7 +17,20 @@ function linkedListGenerator(){
   }
 
   function add(value){
+    test = {
+      value: value,
+      next: null
+    }
 
+    if(head === null){
+      head = test;
+      tail = test;
+    }else{
+      tail = test;
+      tail.next = test;
+    }
+
+    return test;
   }
 
   function get(number){
